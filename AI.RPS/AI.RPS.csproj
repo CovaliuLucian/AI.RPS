@@ -8,10 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>AI.RPS</RootNamespace>
     <AssemblyName>AI.RPS</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,8 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIs\CopyCat.cs" />
+    <Compile Include="AIs\RandomPicker.cs" />
+    <Compile Include="Choice.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameResult.cs" />
+    <Compile Include="GameRound.cs" />
+    <Compile Include="GameRunner.cs" />
+    <Compile Include="History.cs" />
+    <Compile Include="Interfaces\IArtificialInteligence.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Score.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
