@@ -16,11 +16,11 @@ namespace AI.RPS
                 FancyWrite($"Ai choose {aiChoice.ToString()}");
                 var currentScore = game.Score;
                 FancyWrite(
-                    $"Round {game.Round}\nPlayer: {currentScore.PlayerWins}  AI: {currentScore.AiWins}\nDraws: {currentScore.Draws}");
+                    $"Round {game.Round}\nPlayer: {currentScore.PlayerWins}\tAI: {currentScore.AiWins}\tDraws: {currentScore.Draws}");
             }
 
             var finalScore = game.FinishGame();
-            FancyWrite($"Player: {finalScore.PlayerWins}  AI: {finalScore.AiWins}\nDraws: {finalScore.Draws}");
+            FancyWrite($"Final score:\nPlayer: {finalScore.PlayerWins}\tAI: {finalScore.AiWins}\tDraws: {finalScore.Draws}");
             return finalScore;
         }
 

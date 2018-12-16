@@ -7,7 +7,7 @@ namespace AI.RPS
     {
         public static void Main(string[] args)
         {
-            var result = GameRunner.Run(new RandomPicker());
+            var result = GameRunner.Run(new CopyCat());
 
             
         }
