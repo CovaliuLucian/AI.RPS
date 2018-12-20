@@ -7,7 +7,11 @@ namespace AI.RPS
     {
         public static Score Run(IArtificialInteligence artificialInteligence, int rounds = 15)
         {
+            Console.WriteLine("Enter your name: ");
+            var name = Console.ReadLine();
             var game = new Game();
+            game.Name = name;
+
             for (var i = 0; i < rounds; i++)
             {
                 var playerChoice = ReadPlayerInput();

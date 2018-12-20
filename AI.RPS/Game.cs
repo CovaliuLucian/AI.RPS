@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace AI.RPS
 {
@@ -7,6 +8,7 @@ namespace AI.RPS
         public History History { get; set; }
         public Score Score { get; set; }
         public int Round { get; set; }
+        public string Name { get; set; }
 
         public Game()
         {
@@ -74,7 +76,49 @@ namespace AI.RPS
 
         private void SaveGame()
         {
-            //TODO
+            var fileName = "../../Users/" + Name + ".txt";
+
+            if (File.Exists(fileName))
+            {
+                string[] allLines;
+                allLines = File.ReadAllLines(fileName);
+
+                string[] tokens = allLines[0].Split(' ');
+                int wins = 0, draws = 0, loses = 0;
+                bool parsedWins = Int32.TryParse(tokens[1], out wins);
+                bool parsedDraws = Int32.TryParse(tokens[3], out draws);
+                bool parsedLoses = Int32.TryParse(tokens[5], out loses);
+
+                if (!parsedWins)
+                    Console.WriteLine("Int32.TryParse could not parse '{0}' to an int.\n", tokens[1]);
+                if (!parsedDraws)
+                    Console.WriteLine("Int32.TryParse could not parse '{0}' to an int.\n", tokens[3]);
+                if (!parsedLoses)
+                    Console.WriteLine("Int32.TryParse could not parse '{0}' to an int.\n", tokens[5]);
+
+                allLines[0] = "Wins: " + (Score.PlayerWins + wins) + " Draws: " + (Score.Draws + draws) + " Loses: " + (Score.AiWins + loses);
+                File.WriteAllLines(fileName, allLines);
+                var file = File.Open(fileName, FileMode.Append);
+
+                using (var stream = new StreamWriter(file))
+                {
+                    foreach (var round in History.Rounds)
+                    {
+                        stream.WriteLine(round.PlayerChoice);
+                    }
+                }
+            }
+            else
+            {
+                using (StreamWriter file = new StreamWriter(fileName))
+                {
+                    file.WriteLine("Wins: " + Score.PlayerWins + " Draws: " + Score.Draws + " Loses: " + Score.AiWins);
+                    foreach (var round in History.Rounds)
+                    {
+                        file.WriteLine(round.PlayerChoice);
+                    }
+                }
+            }
         }
     }
 }

@@ -7,9 +7,8 @@ namespace AI.RPS
     {
         public static void Main(string[] args)
         {
-            var result = GameRunner.Run(new CopyCat());
-
-            
+            var result = GameRunner.Run(new Probability());
+            Console.ReadLine();
         }
     }
 }
