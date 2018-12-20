@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIs\Mixed.cs" />
     <Compile Include="AIs\CopyCat.cs" />
     <Compile Include="AIs\Probability.cs" />
     <Compile Include="AIs\RandomPicker.cs" />

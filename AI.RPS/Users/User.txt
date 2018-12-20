@@ -1,0 +1,16 @@
+Wins: 3 Draws: 8 Loses: 4
+Rock
+Paper
+Paper
+Rock
+Rock
+Rock
+Rock
+Paper
+Scissors
+Scissors
+Paper
+Paper
+Paper
+Paper
+Scissors
