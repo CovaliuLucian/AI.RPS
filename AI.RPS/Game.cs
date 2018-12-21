@@ -39,7 +39,7 @@ namespace AI.RPS
             }
         }
 
-        public void NextRound(Choice playerChoice, Choice aiChoice)
+        public GameResult NextRound(Choice playerChoice, Choice aiChoice)
         {
             var gameResult = ChooseWinner(playerChoice, aiChoice);
 
@@ -66,6 +66,8 @@ namespace AI.RPS
                     throw new ArgumentOutOfRangeException();
             }
             History.Add(currentRound);
+
+            return gameResult;
         }
 
         public Score FinishGame()

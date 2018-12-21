@@ -5,18 +5,19 @@ namespace AI.RPS
 {
     public static class GameRunner
     {
-        public static Score Run(IArtificialInteligence artificialInteligence, int rounds = 15)
+        public static Score Run(IArtificialInteligence artificialIntelligence, int rounds = 15)
         {
             Console.WriteLine("Enter your name: ");
             var name = Console.ReadLine();
-            var game = new Game();
-            game.Name = name;
+            var game = new Game {Name = name};
 
             for (var i = 0; i < rounds; i++)
             {
                 var playerChoice = ReadPlayerInput();
-                var aiChoice = artificialInteligence.Run(game);
-                game.NextRound(playerChoice, aiChoice);
+                var aiChoice = artificialIntelligence.Run(game);
+                var gameResult = game.NextRound(playerChoice, aiChoice);
+                if (gameResult == GameResult.Draw)
+                    i--;
                 FancyWrite($"Ai choose {aiChoice.ToString()}");
                 var currentScore = game.Score;
                 FancyWrite(
@@ -24,7 +25,8 @@ namespace AI.RPS
             }
 
             var finalScore = game.FinishGame();
-            FancyWrite($"Final score:\nPlayer: {finalScore.PlayerWins}\tAI: {finalScore.AiWins}\tDraws: {finalScore.Draws}");
+            FancyWrite(
+                $"Final score:\nPlayer: {finalScore.PlayerWins}\tAI: {finalScore.AiWins}\tDraws: {finalScore.Draws}");
             return finalScore;
         }
 

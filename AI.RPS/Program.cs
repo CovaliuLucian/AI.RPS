@@ -22,6 +22,8 @@ namespace AI.RPS
                     result = GameRunner.Run(new RandomPicker());
                     break;
             }
+
+            Console.Read();
         }
 
         private static void FancyWrite(string @string)
